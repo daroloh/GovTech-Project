@@ -1,0 +1,27 @@
+project:
+  name: hdb-bto-pricing
+  version: 0.1.0
+paths:
+  duckdb_path: data/hdb.duckdb
+  model_dir: artifacts/models
+  metrics_path: artifacts/metrics.json
+  logs_dir: artifacts/logs
+  features_table: features
+  clean_table: transactions_clean
+  raw_table: transactions_raw
+training:
+  target: resale_price
+  test_size: 0.2
+  random_state: 42
+  model_type: RandomForestRegressor
+  n_estimators: 100
+  max_depth: 12
+  discount_rate: 0.20
+api:
+  host: 0.0.0.0
+  port: 8000
+llm:
+  provider: openai
+  model: gpt-4o-mini
+  max_tokens: 400
+  temperature: 0.3
